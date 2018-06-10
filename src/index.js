@@ -39,3 +39,5 @@ addMember({
     github: "kucingkucing"
 })
 viewMembers()
+
+console.log("Finish");
