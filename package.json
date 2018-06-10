@@ -1,0 +1,26 @@
+{
+  "name": "hello-universe",
+  "version": "0.1.0",
+  "description": "Hello Universe program, learning best practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/",
+    "start": "node src/",
+    "dev": "nodemon src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderjs-org/hello-universe.git"
+  },
+  "keywords": [
+    "hello",
+    "universe",
+    "javascript"
+  ],
+  "author": "CoderJS Community <coderjs.org@gmail.com> (https://coderjs.org)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderjs-org/hello-universe/issues"
+  },
+  "homepage": "https://github.com/coderjs-org/hello-universe#readme"
+}
