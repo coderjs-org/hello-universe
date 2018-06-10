@@ -8,7 +8,7 @@ Intermediate JavaScript & Node.js Best Practice Project.
 
 ## Goals
 
-CoderJS Attendance
+CoderJS attendance program.
 
 - View members
 - Add members
