@@ -1,31 +1,32 @@
 const bcrypt = require('bcrypt-promised');
+const uuid = require('uuid/v4');
 
 // Initalize default data
 // There are at least 2 members in community
 
 const members = [
-    // {
-    //     name: "Haidar Hanif",
-    //     email: "haidar@impactbyte.com",
-    //     phone: "+62-8-1993-101010",
-    //     github_handle: "mhaidarh",
-    //     admin: true,
-    //     address: "Depok"
-    // },
-    // {
-    //     name: "Joko",
-    //     email: "joko@impactbyte.com",
-    //     phone: "+62-8-1234-5678",
-    //     github: "jokorezky",
-    //     admin: true,
-    //     address: "Batam"
-    // }
+    {
+        id: uuid(),
+        name: "Haidar Hanif",
+        email: "haidar@impactbyte.com",
+        phone: "+62-8-1993-101010",
+        github_handle: "mhaidarh",
+        admin: true,
+        address: "Depok"
+    },
+    {
+        id: uuid(),
+        name: "Joko",
+        email: "joko@impactbyte.com",
+        phone: "+62-8-1234-5678",
+        github: "jokorezky",
+        admin: true,
+        address: "Batam"
+    }
 ]
 
 const viewMembers = (members) => {
-    members.forEach(member => {
-        console.log(`${member.name}: ${member.hash}`);
-    })
+   console.log(members);
 }
 
 const addMember = async ({
@@ -38,6 +39,7 @@ const addMember = async ({
     const hash = await encryptPassword(password)
 
     members.push({
+        id: uuid(),
         name,
         email,
         phone,
@@ -71,6 +73,5 @@ addMember({
 })
 
 setTimeout(() => {
-    console.log(members);
     viewMembers(members);
 }, 1000);

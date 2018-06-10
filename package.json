@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "bcrypt": "^2.0.0",
-    "bcrypt-promised": "^1.0.1"
+    "bcrypt-promised": "^1.0.1",
+    "uuid": "^3.2.1"
   }
 }
