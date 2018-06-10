@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt-promised');
 
 // Initalize default data
 // There are at least 2 members in community
@@ -22,43 +22,36 @@ const members = [
     // }
 ]
 
-const viewMembers = () => {
+const viewMembers = (members) => {
     members.forEach(member => {
-        console.log(member.name, member.password);
-        // console.log(`Hello ${member.name} (@${member.github})! Phone: ${member.phone}`);
+        console.log(`${member.name}: ${member.hash}`);
     })
 }
 
-const addMember = ({
+const addMember = async ({
     name,
     email,
     phone,
     github,
     password
 }) => {
-    encryptPassword(password, function(hash) {
-        console.log(`hash of ${name}:`, hash);
+    const hash = await encryptPassword(password)
 
-        members.push({
-            name,
-            email,
-            phone,
-            github,
-            hash
-        })
+    members.push({
+        name,
+        email,
+        phone,
+        github,
+        hash
     })
-
-   
 }
 
-const encryptPassword = (password, callback) => {
+const encryptPassword = async (password) => {
     const saltRounds = 0;
-
-    bcrypt.genSalt(saltRounds, function (err, salt) {
-        bcrypt.hash(password, salt, function (err, hash) {
-            callback(hash)
-        });
+    const hashed = bcrypt.hash(password, saltRounds).then(hash => {
+        return hash
     });
+    return hashed
 }
 
 addMember({
@@ -67,7 +60,9 @@ addMember({
     phone: "+62-8-10101010",
     github: "kucingkucingmiaw",
     password: "rahasia123"
-}, {
+})
+
+addMember({
     name: "Ayam",
     email: "ayam@chickens.com",
     phone: "+62-8-10101010",
@@ -75,4 +70,7 @@ addMember({
     password: "rahasia456"
 })
 
-viewMembers()
+setTimeout(() => {
+    console.log(members);
+    viewMembers(members);
+}, 1000);
